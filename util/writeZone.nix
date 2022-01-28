@@ -7,5 +7,5 @@
 name: zone:
   writeTextFile {
     name = "${name}.zone";
-    text = toString (evalZone name zone);
+    text = toString (evalZone zone);
   }

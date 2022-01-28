@@ -105,5 +105,5 @@ rec {
       result = lib.concatStringsSep "; " items + ";";
     in dns.util.writeCharacterString result;
   nameFixup = name: _self:
-    "_dmarc.${name}";
+    "_dmarc${lib.optionalString (name != "@") ".${name}"}";
 }

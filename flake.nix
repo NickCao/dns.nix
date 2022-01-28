@@ -20,7 +20,7 @@
         inherit (dns) evalZone;
         inherit (dns) combinators;
         inherit (dns) types;
-        toString = name: zone: builtins.toString (dns.evalZone name zone);
+        toString = name: zone: builtins.toString (dns.evalZone zone);
       } // dns.combinators;
 
     } // flake-utils.lib.eachDefaultSystem (system:

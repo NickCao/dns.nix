@@ -16,7 +16,7 @@ let
 
   combinators = import ./combinators.nix { lib = lib'; };
 
-  evalZone = name: zone:
+  evalZone = zone:
     (lib.evalModules {
       modules = [
         { options = {
@@ -26,11 +26,11 @@ let
             };
           };
           config = {
-            zones = { "${name}" = zone; };
+            zones = { "@" = zone; };
           };
         }
       ];
-    }).config.zones."${name}";
+    }).config.zones."@";
 
 in
 

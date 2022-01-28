@@ -52,5 +52,5 @@ in
   dataToString = data: with data;
     "${toString priority} ${toString weight} ${toString port} ${target}";
   nameFixup = name: self:
-    "_${self.service}._${self.proto}.${name}";
+    "_${self.service}._${self.proto}${lib.optionalString (name != "@") ".${name}"}";
 }

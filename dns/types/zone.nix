@@ -51,7 +51,7 @@ let
       groups = mapAttrsToList groupToString rsubtypes';
       groups' = filter (s: s != "") groups;
 
-      writeSubzone' = subname: writeSubzone "${subname}.${name}";
+      writeSubzone' = subname: writeSubzone "${subname}${lib.optionalString (name != "@") ".${name}"}";
       sub = concatStringsSep "\n\n" (mapAttrsToList writeSubzone' zone.subdomains);
     in
       concatStringsSep "\n\n" groups'
@@ -83,9 +83,9 @@ let
         ''
           $TTL ${toString TTL}
 
-          ${writeRecord name rsubtypes.SOA SOA}
+          ${writeRecord "@" rsubtypes.SOA SOA}
 
-          ${writeSubzone name zone}
+          ${writeSubzone "@" zone}
         '';
     };
   });

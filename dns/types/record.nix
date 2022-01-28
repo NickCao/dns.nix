@@ -41,7 +41,7 @@ let
       name' = rsubt.nameFixup or (n: _: n) name data';
       rtype = rsubt.rtype;
     in lib.concatStringsSep " " (with data'; [
-        "${name'}."
+        "${name'}"
       ] ++ lib.optionals (ttl != null) [
         (toString ttl)
       ] ++ [

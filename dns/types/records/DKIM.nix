@@ -74,5 +74,5 @@ rec {
       result = lib.concatStringsSep "; " items + ";";
     in dns.util.writeCharacterString result;
   nameFixup = name: self:
-    "${self.selector}._domainkey.${name}";
+    "${self.selector}._domainkey${lib.optionalString (name != "@") ".${name}"}";
 }
